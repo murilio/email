@@ -12,58 +12,15 @@
   $headers = "Content-type: text/html; charset=utf-8\n";
 
 
+  $protocolo = (strpos(strtolower($_SERVER['SERVER_PROTOCOL']),'https') === false) ?'http':'https';
+  $host = $_SERVER['HTTP_HOST'];
+  $raiz = $protocolo.'://'.$host;
+
   if(mail($para, $assunto, $message, $headers)){
     echo "enviado com sucesso";
-    header("Location: index.php");
+    header('location:'. $raiz);
   }else{
     echo "Ocorreu um erro";
   }
-
-?>
-
-
-
-
-
-
-
-<?php
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// if(isset($_POST['email']) && !empty($_POST['email'])){
-
-//     $nome = addslashes($_POST['nome'])
-//     $email = addslashes($_POST['email'])
-//     $mensagem = addslashes($_POST['mensagem'])
-
-//     $to = "murilio@sogo.com.br";
-//     $subject = "Contato Alfa Group";
-//     $body = "Nome: ".$nome. "\r\n"
-//             "Email: ".$email. "\r\n"
-//             "Mensagem: ".$mensagem. "\n"
-
-    // from=email que pertence ao domínio
-    // $header = "From: "."\r\n"
-    //             ."Reply-To:".$email."\r\n"
-    //             ."X=Mailer:PHP/".phpversion();
-
-    // mail($to, $subject, $body, $header)
-
-
-// }
 
 ?>
